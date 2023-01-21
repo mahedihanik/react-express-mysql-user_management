@@ -15,7 +15,7 @@
 Node Version : 14.21.2\
 NPM Version  : 6.14.17
 
-#### For install dependencies run :
+#### For install dependencies run (ignore if downloaded from drive) :
 ### `npm init -y`
 ### `npm install express mysql2 sequelize jsonwebtoken bcrypt cookie-parser dotenv cors`
 ### `npm install -g nodemon`
