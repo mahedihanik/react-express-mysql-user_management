@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# User Management Frontend And Backend
+## Backend (Node ,Express, MySQL)
+### Dependency Packages :
+1. Express
+2. Mysql2
+3. Sequelize ORM
+4. Jsonwebtoken
+5. Bcrypt
+6. Cookie-parser
+7. Dotenv
+8. Cors
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Please install Node and NPM globally :
 
-## Available Scripts
+Node Version : 14.21.2\
+NPM Version  : 6.14.17
 
-In the project directory, you can run:
+#### For install dependencies run :
+### `npm init -y`
+### `npm install express mysql2 sequelize jsonwebtoken bcrypt cookie-parser dotenv cors`
+### `npm install -g nodemon`
 
+#### Database setup :
+### `Go to backend/config/DatabaseConfig.js add your database config in bellow code:`
+
+const DB = new Sequelize('dbname_here', 'dbusername_here', 'dbpassword_here', {
+host: "dbhostname_here",
+dialect: "mysql"
+});
+
+#### For run project with nodemon run command (PORT : localhost:5000):
+### `nodemon index`
+After run this command Sequelize help you to create Users and Setting table automatically. You just need to run insert sql command for dummy data from SQL file which I already provided.
+
+For user table dummy data run sql :
+
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `refresh_token`, `image`, `role`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, 'Mahedi Hasan Anik', 'mahedihanik', 'mahedi.h.anik@gmail.com', '$2a$12$DQNBojiiUwTiXuSiL.PNmOd2dQGrO.WqOvBr337tfR75/pBBRfPLa', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJNYWhlZGkgSGFzYW4gQW5payIsImVtYWlsIjoibWFoZWRpLmguYW5pa0BnbWFpbC5jb20iLCJzdGF0dXMiOiJhY3RpdmUiLCJpYXQiOjE2NzQyNzIyNjMsImV4cCI6MTY3NDM1ODY2M30.btFZzpCO_S7R0owypPZ4unL3VNs2MfXvLSWxU3xipwg', NULL, 'admin', 'active', '2023-01-21 01:50:48', '2023-01-21 05:21:37'),
+(2, 'Sakib Nisat Alok', 'sakibnalok', 'sakib.n.alok@gmail.com', '$2a$12$DQNBojiiUwTiXuSiL.PNmOd2dQGrO.WqOvBr337tfR75/pBBRfPLa', NULL, NULL, 'user', 'active', '2023-01-21 01:50:48', '2023-01-21 05:17:35'),
+(3, 'Alok Hosen', NULL, 'alok@gmail.com', '$2a$12$DQNBojiiUwTiXuSiL.PNmOd2dQGrO.WqOvBr337tfR75/pBBRfPLa', NULL, NULL, 'admin', 'inactive', '2023-01-21 04:47:03', '2023-01-21 05:18:40');
+
+For setting table dummy data run sql :
+
+INSERT INTO `setting` (`id`, `key`, `value`, `description`, `active`, `createdAt`, `updatedAt`) VALUES
+(1, 'login_attempt_count', '0', 'login attempt mode', 1, '2023-01-20 23:19:45', '2023-01-21 03:37:42');
+
+#### Login Password : asl123
+
+## Frontend (React)
+
+Version : 18.0 +
+
+Run:
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
